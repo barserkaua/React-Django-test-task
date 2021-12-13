@@ -10,7 +10,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('auth', '0015_rename_descriptions_group_note'),
         ('base', '0002_delete_group'),
     ]
 
