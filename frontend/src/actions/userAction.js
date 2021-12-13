@@ -22,7 +22,7 @@ import {
 } from "../constants/userConstants";
 
 
-export const addNewUser = (email, password) => async (dispatch) => {
+export const addNewUser = (email, group, password) => async (dispatch) => {
     try {
         dispatch({type: USER_REGISTER_REQUEST})
 
@@ -34,7 +34,7 @@ export const addNewUser = (email, password) => async (dispatch) => {
         // we gonna take the email and password
         const {data} = await axios.post(  // we`re going to make post request
             `/api/users/add/`,
-            {'email': email, 'password': password},
+            {'email': email, 'groups': group, 'password': password},
             config
         )
         // if post request is successful, we want to dispatch and then send the payload to our reducers

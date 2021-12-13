@@ -28,16 +28,21 @@ function GroupsScreen(){
     },[dispatch, successDelete])
 
     const deleteHandler = (id) => {
+        let count_users_in_group = 0;
         if (window.confirm('Are you sure you want delete this group?')) {
             users.forEach(user => {
                 user.groups.forEach(group => {
                     if (group.id === id) {
-                        window.alert('You can`t delete this group, because some users in there')
-                    } else {
-                        dispatch(deleteGroup(id))
+                        count_users_in_group++;
                     }
                 })
             })
+            if (count_users_in_group > 0) {
+                window.alert('You can`t delete this group, because some users in there')
+            }
+            else {
+                dispatch(deleteGroup(id))
+            }
         }
     }
 

@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.http import JsonResponse
 from django.contrib.auth.models import User, Group
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -45,11 +43,15 @@ def getUserById(request, pk):
 def editUser(request, pk):
     # we get user information
     user = User.objects.get(id=pk)
+    # we clear ours group if we have it
+    user.groups.clear()
 
     data = request.data
 
     user.username = data['email']
     user.email = data['email']
+    add_group = Group.objects.get(name=data['groups'])
+    user.groups.add(add_group)
 
     user.save()
 
@@ -66,9 +68,12 @@ def addUser(request):
         user = User.objects.create(
             username=data['email'],
             email=data['email'],
-            #groups=data['groups'],
             password=make_password(data['password'])
         )
+
+        add_group = Group.objects.get(name=data['groups'])
+        user.groups.add(add_group)
+
         serializer = UserSerializer(user, many=False)
 
         return Response(serializer.data)

@@ -25,7 +25,7 @@ function UsersScreen(){
 
     const deleteHandler = (id) => {
         if (window.confirm('Are you sure you want delete this user?')) {
-            deleteHandler(id)
+            dispatch(deleteUser(id))
         }
     }
 

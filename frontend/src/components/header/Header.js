@@ -1,10 +1,7 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import {useNavigate, useParams} from "react-router";
 import {NavLink} from "react-router-dom";
 
 function Header() {
-
-    const location = window.location.pathname;
 
     return (
         <Navbar bg="primary" expand="lg">

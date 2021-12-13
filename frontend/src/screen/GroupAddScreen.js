@@ -8,7 +8,6 @@ import FormContainer from "../components/form-container/FormContainer";
 
 import {addNewGroup} from "../actions/groupAction";
 import {GROUP_ADD_NEW_RESET} from "../constants/groupConstants";
-import {addNewUser} from "../actions/userAction";
 
 function GroupAddScreen() {
 
@@ -27,7 +26,7 @@ function GroupAddScreen() {
             dispatch({type: GROUP_ADD_NEW_RESET})
             navigate(`/groups`)
         }
-    }, [navigate, success])
+    }, [navigate, success, dispatch])
 
     const submitHandler = (e) => {
         e.preventDefault()
