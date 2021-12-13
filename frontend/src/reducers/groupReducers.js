@@ -65,7 +65,7 @@ export const groupAddNewReducer = (state={}, action) => {
     }
 }
 
-// we throw in the user object
+// we throw in the group object
 export const groupDetailsReducer = (state={group: {}}, action) => {
     switch (action.type) {
         case GROUP_DETAILS_REQUEST:

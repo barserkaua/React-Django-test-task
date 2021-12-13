@@ -26,7 +26,7 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def getUsers(request):
-    # return all products from our database
+    # return all users from our database
     users = User.objects.all()
 
     serializer = UserSerializer(users, many=True)
@@ -35,7 +35,7 @@ def getUsers(request):
 
 @api_view(['GET'])
 def getUserById(request, pk):
-    # return all products from our database
+    # return all user from our database
     user = User.objects.get(id=pk)
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
@@ -86,7 +86,7 @@ def deleteUser(request, pk):
 
 @api_view(['GET'])
 def getGroups(request):
-    # return all products from our database
+    # return all groups from our database
     groups = Group.objects.all()
 
     serializer = GroupSerializer(groups, many=True)
@@ -95,7 +95,7 @@ def getGroups(request):
 
 @api_view(['GET'])
 def getGroupById(request, pk):
-    # return all products from our database
+    # return all group from our database
     group = Group.objects.get(id=pk)
     serializer = GroupSerializer(group, many=False)
     return Response(serializer.data)
