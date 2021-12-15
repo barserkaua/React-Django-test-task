@@ -42,4 +42,17 @@ To check if everything is working properly, we start our React server:
   
   `npm start`
 
+## Connect to Docker localhost
 
+We are assembling our project with `docker-compose build` command. This command takes all the changes that are in the `docker-compose.yml` file.
+
+   `docker-compose build`
+   
+   
+Now that the project is built, it's time to launch it.
+
+   `docker-compose up`
+   
+To check if everything works correctly, follow this link:
+  
+  http://localhost/
