@@ -14,7 +14,7 @@ import {listGroups} from "../actions/groupAction";
 function UserAddScreen() {
 
     const [email, setEmail] = useState('');
-    const [group, setGroup] = useState('');
+    const [group, setGroup] = useState('-');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
