@@ -46,8 +46,8 @@ export const addNewUser = (email, group, password) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: USER_REGISTER_FAIL,
-            payload: error.response && error.response.data.message
-                ? error.response.data.message
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
                 : error.message,
         })
     }

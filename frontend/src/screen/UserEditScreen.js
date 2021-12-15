@@ -54,8 +54,6 @@ function UserEditScreen() {
         dispatch(updateUser({_id:user._id, groups: group, email}))
     }
 
-    console.log(group)
-
     return (
         <div>
             <Link to='/users' className="btn btn-outline-success my-3"><i className="fas fa-arrow-left"></i> Go Back</Link>
@@ -84,10 +82,10 @@ function UserEditScreen() {
                             <Form.Group controlId='group'>
                                 <Form.Label className="my-3">Group</Form.Label >
                                 <Form.Select
-                                    required
                                     value={group}
                                     onChange={(e) => setGroup(e.target.value)}
                                 >
+                                    <option hidden>Choose group...</option>
                                     {groups.map(group => (
                                         <option key={group.id} defaultValue={group.name}>
                                             {group.name}

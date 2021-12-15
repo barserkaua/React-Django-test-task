@@ -23,9 +23,14 @@ function UsersScreen(){
 
     },[dispatch, successDelete])
 
-    const deleteHandler = (id) => {
+    const deleteHandler = (user) => {
         if (window.confirm('Are you sure you want delete this user?')) {
-            dispatch(deleteUser(id))
+            if (!user.isAdmin) {
+                dispatch(deleteUser(user._id))
+            } else {
+                window.alert('You can`t delete this user, because he is admin')
+            }
+
         }
     }
 
@@ -71,7 +76,7 @@ function UsersScreen(){
                                             </Button>
                                         </Link>
 
-                                        <Button onClick={() => deleteHandler(user._id)} variant='danger' className='btn-sm'>
+                                        <Button onClick={() => deleteHandler(user)} variant='danger' className='btn-sm'>
                                             <i className='fas fa-trash'></i>
                                         </Button>
                                     </td>

@@ -14,7 +14,7 @@ import {listGroups} from "../actions/groupAction";
 function UserAddScreen() {
 
     const [email, setEmail] = useState('');
-    const [group, setGroup] = useState('-');
+    const [group, setGroup] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -77,10 +77,10 @@ function UserAddScreen() {
                                 <Form.Group controlId='group'>
                                     <Form.Label className="my-3">Group</Form.Label >
                                     <Form.Select
-                                        required
                                         value={group}
                                         onChange={(e) => setGroup(e.target.value)}
                                     >
+                                        <option hidden>Choose group...</option>
                                         {groups.map(group => (
                                             <option key={group.id}>
                                                 {group.name}

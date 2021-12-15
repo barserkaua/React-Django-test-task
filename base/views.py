@@ -50,8 +50,10 @@ def editUser(request, pk):
 
     user.username = data['email']
     user.email = data['email']
-    add_group = Group.objects.get(name=data['groups'])
-    user.groups.add(add_group)
+
+    if len(data['groups']) > 0:
+        add_group = Group.objects.get(name=data['groups'])
+        user.groups.add(add_group)
 
     user.save()
 
@@ -71,14 +73,15 @@ def addUser(request):
             password=make_password(data['password'])
         )
 
-        add_group = Group.objects.get(name=data['groups'])
-        user.groups.add(add_group)
+        if len(data['groups']) > 0:
+            add_group = Group.objects.get(name=data['groups'])
+            user.groups.add(add_group)
 
         serializer = UserSerializer(user, many=False)
 
         return Response(serializer.data)
     except:
-        message = {'detail': 'User with this email already exists'}
+        message = {'detail': 'User with this email already exists or password not confirm'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
